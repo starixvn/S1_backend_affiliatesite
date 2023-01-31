@@ -12,9 +12,6 @@
     <PackageReference Include="Serilog.Exceptions" Version="8.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AffiliateSite.Domain\AffiliateSite.Domain.csproj" />
     <ProjectReference Include="..\AffiliateSite.Framework\AffiliateSite.Framework.csproj" />
   </ItemGroup>

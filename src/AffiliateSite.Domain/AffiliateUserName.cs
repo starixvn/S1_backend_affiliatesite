@@ -17,7 +17,7 @@ namespace AffiliateSite.Domain
 
             UserName = userName;
         }
-        public static implicit operator string(AffiliateUserName title) => title.UserName;
+        public static implicit operator string(AffiliateUserName userName) => userName.UserName;
         public bool Equals(AffiliateUserName other)
         {
             if (ReferenceEquals(null, other)) return false;

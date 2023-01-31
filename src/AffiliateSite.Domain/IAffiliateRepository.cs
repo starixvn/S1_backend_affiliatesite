@@ -12,6 +12,7 @@ namespace AffiliateSite.Domain
 
         Task<Affiliate> Load(string userNmae);
 
-        Task Save(Affiliate entity);
+        Task Add(Affiliate entity);
+        Task UpdatePassword(Affiliate entity);
     }
 }

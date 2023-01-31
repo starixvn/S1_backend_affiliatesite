@@ -14,5 +14,11 @@ namespace AffiliateSite.Domain
             public string LastName { get; set; }
             public string UserName { get; set; }
         }
+
+        public class AffiliateChangePassword 
+        {
+            public string UserName { get; set; }
+            public string NewPassword { get; set; }
+        }
     }
 }

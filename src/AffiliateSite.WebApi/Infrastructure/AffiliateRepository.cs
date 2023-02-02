@@ -5,6 +5,12 @@ namespace AffiliateSite.WebApi.Infrastructure
     public class AffiliateRepository : IAffiliateRepository
     {
         private List<Affiliate> _affiliates;
+
+        public AffiliateRepository()
+        {
+            _affiliates = new List<Affiliate>();
+        }
+
         public async Task Add(Affiliate entity)
         {
             _affiliates.Add(entity);

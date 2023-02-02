@@ -19,7 +19,9 @@ builder.Host.UseSerilog((context, configuration) =>
         .Enrich.WithExceptionDetails();
 });
 
-builder.Services.AddControllers();
+builder.Services
+    .RegisterServices()
+    .AddControllers();
 
 var app = builder.Build();
 app.UseRouting();

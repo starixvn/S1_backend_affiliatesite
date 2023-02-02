@@ -1,5 +1,4 @@
-﻿using AffiliateSite.Domain;
-using AffiliateSite.WebApi.Contracts;
+﻿using AffiliateSite.WebApi.Contracts;
 using AffiliateSite.WebApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

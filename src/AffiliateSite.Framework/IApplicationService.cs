@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.WebApi.Services
+﻿namespace AffiliateSite.Framework
 {
     public interface IApplicationService
     {

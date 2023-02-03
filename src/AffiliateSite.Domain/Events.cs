@@ -20,5 +20,12 @@ namespace AffiliateSite.Domain
             public string UserName { get; set; }
             public string NewPassword { get; set; }
         }
+
+        public class AffiliateUpdateInformation
+        {
+            public string Phone { get; set; }
+            public string Skype { get; set; }
+            public string QQ { get; set; }
+        }
     }
 }

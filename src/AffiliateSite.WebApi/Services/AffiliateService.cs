@@ -27,17 +27,24 @@ namespace AffiliateSite.WebApi.Services
                     await _repository.Add(classifiedAd);
                     break;
                 case Affiliates.ChangePassword cmd:
+                    if (cmd.NewPassword != cmd.ConfirmNewPassword)
+                        throw new InvalidOperationException($"{cmd.NewPassword} and {cmd.ConfirmNewPassword} is not match");
+
                     var affiliate = await _repository.Load(cmd.UserName);
                     if (affiliate == null)
                         throw new InvalidOperationException($"Entity with id {cmd.UserName} cannot be found");
 
-                    if(cmd.NewPassword != cmd.ConfirmNewPassword)
-                        throw new InvalidPasswordException($"{cmd.NewPassword} and {cmd.ConfirmNewPassword} is not match");
-
                     if(_crypto.VerifyHashedPassword(affiliate.Password, cmd.OldPassword))
-                        throw new InvalidPasswordException($"Old password is incorrect");
+                        throw new InvalidOperationException($"Old password is incorrect");
                     affiliate.ChangePassword(AffiliatePassword.FromString(cmd.NewPassword, _crypto));
                     await _repository.UpdatePassword(affiliate);
+                    break;
+                case Affiliates.UpdateInformation cmd:
+                    var aff = await _repository.Load(cmd.UserName);
+                    if (aff == null)
+                        throw new InvalidOperationException($"Entity with user name {cmd.UserName} cannot be found");
+                    aff.UpdateInformation(AffiliatePhone.FromString(cmd.Phone), new AffiliateContactApp(cmd.Skype, cmd.QQ));
+                    await _repository.UpdateInformation(aff);
                     break;
             }
         }

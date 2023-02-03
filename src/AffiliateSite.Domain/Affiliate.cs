@@ -7,19 +7,24 @@ using System.Threading.Tasks;
 
 namespace AffiliateSite.Domain
 {
-    public class Affiliate : Entity<AffiliateUserName>
+    public class Affiliate : AggregateRoot<AffId>
     {
-        public int AffId { get; set; }
+        public AffId AffId { get; set; }
         public AffiliateUserName UserName { get; private set; }
         public AffiliateFullName FullName { get; private set; }
-        public AffiliatePassword Password { get; set; }
+        public AffiliatePassword Password { get; private set; }
+        public AffiliateEmail Email { get; private set; }
+        public AffiliatePhone Phone { get; private set; }
+        public AffiliateContactApp ContactApp { get; private set; }
+        public AffiliateUserName PlayerUserName { get; private set; }
         public AffiliateStatus Status { get; private set; }
+
 
         public Affiliate(AffiliateUserName userName, AffiliateFullName fullName) =>
             Apply(new Events.AffiliateSignup
             {
                 UserName = userName,
-                FirstName = fullName.FirstName, 
+                FirstName = fullName.FirstName,
                 LastName = fullName.LastName
             });
 
@@ -28,9 +33,18 @@ namespace AffiliateSite.Domain
                 new Events.AffiliateChangePassword
                 {
                     UserName = UserName,
-                    NewPassword = password.Password
+                    NewPassword = password.Value
                 }
             );
+
+        public void UpdateInformation(AffiliatePhone phone, AffiliateContactApp contactApp) =>
+            Apply(
+                new Events.AffiliateUpdateInformation 
+                {
+                    Phone = phone,
+                    Skype = contactApp.Skype,
+                    QQ = contactApp.QQ,
+                });
 
         protected override void When(object @event)
         {
@@ -44,6 +58,10 @@ namespace AffiliateSite.Domain
                 case Events.AffiliateChangePassword e:
                     UserName = new AffiliateUserName(e.UserName);
                     Password = new AffiliatePassword(e.NewPassword);
+                    break;
+                case Events.AffiliateUpdateInformation e:
+                    Phone = new AffiliatePhone(e.Phone);
+                    ContactApp = new AffiliateContactApp(e.Skype, e.QQ);
                     break;
             }
         }

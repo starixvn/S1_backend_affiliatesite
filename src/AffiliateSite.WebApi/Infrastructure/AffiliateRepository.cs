@@ -4,13 +4,7 @@ namespace AffiliateSite.WebApi.Infrastructure
 {
     public class AffiliateRepository : IAffiliateRepository
     {
-        private List<Affiliate> _affiliates;
-
-        public AffiliateRepository()
-        {
-            _affiliates = new List<Affiliate>();
-        }
-
+        private static List<Affiliate> _affiliates = new List<Affiliate>();
         public async Task Add(Affiliate entity)
         {
             _affiliates.Add(entity);
@@ -24,6 +18,13 @@ namespace AffiliateSite.WebApi.Infrastructure
         public async Task<Affiliate> Load(string userNmae)
         {
             return _affiliates.FirstOrDefault(a=>a.UserName == userNmae);
+        }
+
+        public async Task UpdateInformation(Affiliate entity)
+        {
+            var affiliate = _affiliates.FirstOrDefault();
+            _affiliates.Remove(affiliate);
+            _affiliates.Add(entity);
         }
 
         public async Task UpdatePassword(Affiliate entity)

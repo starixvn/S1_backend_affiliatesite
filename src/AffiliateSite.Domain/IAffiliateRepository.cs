@@ -14,5 +14,6 @@ namespace AffiliateSite.Domain
 
         Task Add(Affiliate entity);
         Task UpdatePassword(Affiliate entity);
+        Task UpdateInformation(Affiliate entity);
     }
 }

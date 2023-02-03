@@ -27,5 +27,13 @@ namespace AffiliateSite.WebApi.Controllers
             await _affiliateService.Handle(request);
             return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Success };
         }
+
+        [Route("UpdateInformation")]
+        [HttpPost]
+        public async Task<ApiResult> UpdateInformation(Affiliates.UpdateInformation request)
+        {
+            await _affiliateService.Handle(request);
+            return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Success };
+        }
     }
 }

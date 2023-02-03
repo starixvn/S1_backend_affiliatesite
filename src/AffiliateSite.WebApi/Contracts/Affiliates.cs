@@ -17,5 +17,17 @@
             public string NewPassword { get; set; }
             public string ConfirmNewPassword { get; set; }
         }
+
+        public class UpdateInformation
+        {
+            public string UserName { get; set; }
+            public string Phone { get; set; }
+            public string Skype { get; set; }
+            public string QQ { get; set; }
+            public bool HasWebSite { get; set; }
+            public List<string> WebSite { get; set; }
+            public string NoSiteDesc { get; set; }
+            public int DefaultBaseCurrency { get; set; }
+        }
     }
 }

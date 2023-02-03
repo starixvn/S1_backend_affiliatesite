@@ -9,7 +9,7 @@ namespace AffiliateSite.Domain
 {
     public class AffiliatePassword : ValueObject<AffiliatePassword>
     {
-        public string Password { get; set; }
+        public string Value { get; private set; }
         public static AffiliatePassword FromString(string password, ICrypto crypto) => new (password, crypto);
 
         internal AffiliatePassword(string password, ICrypto crypto)
@@ -19,14 +19,14 @@ namespace AffiliateSite.Domain
                 throw new ArgumentNullException(
                     nameof(password), "password can not be empty");
 
-            var currency = crypto.HashPassword(password);
+            var hashPassword = crypto.HashPassword(password);
 
-            Password = password;
+            Value = hashPassword;
         }
         internal AffiliatePassword(string password)
         {
-            Password = password;
+            Value = password;
         }
-        public static implicit operator string(AffiliatePassword password) => password.Password;
+        public static implicit operator string(AffiliatePassword password) => password.Value;
     }
 }

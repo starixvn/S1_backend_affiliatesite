@@ -1,6 +1,6 @@
 ﻿namespace AffiliateSite.WebApi.Contracts
 {
-    public static class Affiliates
+    public static class Commands
     {
         public class Signup 
         {

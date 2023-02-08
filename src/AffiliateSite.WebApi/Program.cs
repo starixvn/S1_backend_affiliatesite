@@ -3,6 +3,7 @@ using Serilog;
 using Serilog.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddRemoteJsonConfig(builder.Configuration.GetSection("ConfigService").Get<string[]>());
 
 builder.Host.UseSerilog((context, configuration) =>
 {
@@ -20,6 +21,7 @@ builder.Host.UseSerilog((context, configuration) =>
 });
 
 builder.Services
+    .AddDatabaseConnection(builder.Configuration)
     .RegisterServices()
     .AddControllers();
 

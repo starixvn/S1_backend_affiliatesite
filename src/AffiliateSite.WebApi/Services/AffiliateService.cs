@@ -18,7 +18,7 @@ namespace AffiliateSite.WebApi.Services
         {
             switch (command) 
             {
-                case Affiliates.Signup cmd:
+                case Commands.Signup cmd:
                     if (await _repository.Exists(cmd.PlayerUserName.ToString()))
                         throw new InvalidOperationException($"Player Username {cmd.PlayerUserName} has been used. Please choose another one!");
 
@@ -26,7 +26,7 @@ namespace AffiliateSite.WebApi.Services
 
                     await _repository.Add(classifiedAd);
                     break;
-                case Affiliates.ChangePassword cmd:
+                case Commands.ChangePassword cmd:
                     if (cmd.NewPassword != cmd.ConfirmNewPassword)
                         throw new InvalidOperationException($"{cmd.NewPassword} and {cmd.ConfirmNewPassword} is not match");
 
@@ -39,7 +39,7 @@ namespace AffiliateSite.WebApi.Services
                     affiliate.ChangePassword(AffiliatePassword.FromString(cmd.NewPassword, _crypto));
                     await _repository.UpdatePassword(affiliate);
                     break;
-                case Affiliates.UpdateInformation cmd:
+                case Commands.UpdateInformation cmd:
                     var aff = await _repository.Load(cmd.UserName);
                     if (aff == null)
                         throw new InvalidOperationException($"Entity with user name {cmd.UserName} cannot be found");

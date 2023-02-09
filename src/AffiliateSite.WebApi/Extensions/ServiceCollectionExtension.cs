@@ -1,7 +1,6 @@
 ﻿using AffiliateSite.Domain;
 using AffiliateSite.WebApi.Affiliate;
 using AffiliateSite.WebApi.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
 
@@ -9,9 +8,20 @@ namespace AffiliateSite.WebApi.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddDatabaseConnection(this IServiceCollection services, IConfiguration configuration) =>
+        public static IServiceCollection AddDatabaseConnection(this IServiceCollection services, IConfiguration configuration) 
+        {
+            var serviceType = configuration.GetValue<string>("ServiceType");
+            var connectionStr = configuration.GetConnectionString($"{serviceType}_MainDB");
+            var conAttribute = connectionStr.Split(';');
+            conAttribute[3] = "database=Affiliate";
+            var affConnection = string.Join(";", conAttribute);
+
             services
-            .AddScoped<DbConnection>(p => new MySqlConnection(configuration.GetConnectionString("ConnectionString")));
+                .AddScoped<DbConnection>(p => new MySqlConnection(affConnection));
+
+            return services;
+        }
+            
         
         public static IServiceCollection RegisterServices(this IServiceCollection services) =>
             services

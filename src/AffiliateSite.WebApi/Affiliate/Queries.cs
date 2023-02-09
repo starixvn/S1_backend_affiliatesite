@@ -17,11 +17,11 @@ namespace AffiliateSite.WebApi.Affiliate
             para.Add("_AffId", query.AffId);
             para.Add("_BaseCurrency", query.BaseCurrency);
             para.Add("_PageSize", Math.Abs(query.PageSize));
-            para.Add("_StartIndex", (Math.Abs(query.PageNumber) - 1) * Math.Abs(query.PageSize), DbType.Int32, ParameterDirection.Input);
+            para.Add("_StartIndex", (Math.Abs(query.PageNumber) - 1) * Math.Abs(query.PageSize));
             para.Add("_PageNumber", Math.Abs(query.PageNumber), DbType.Int32, ParameterDirection.InputOutput);
             para.Add("_TotalPages", dbType: DbType.Int32, direction: ParameterDirection.Output);
             para.Add("_RowCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            var result = await connection.QueryAsync<AffiliateStatementHistory>("Affiliate_StatementHistory_Get", para);
+            var result = await connection.QueryAsync<AffiliateStatementHistory>("Affiliate_StatementHistory_Get", para, commandType: CommandType.StoredProcedure);
 
             return new ApiListResult<AffiliateStatementHistory>
             {

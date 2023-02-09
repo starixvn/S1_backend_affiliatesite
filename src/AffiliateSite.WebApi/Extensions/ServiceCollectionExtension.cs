@@ -1,6 +1,6 @@
 ﻿using AffiliateSite.Domain;
+using AffiliateSite.WebApi.Affiliate;
 using AffiliateSite.WebApi.Infrastructure;
-using AffiliateSite.WebApi.Services;
 using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
 using System.Data.Common;

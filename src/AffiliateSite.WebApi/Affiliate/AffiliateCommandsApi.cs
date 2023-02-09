@@ -1,11 +1,9 @@
-﻿using AffiliateSite.WebApi.Contracts;
-using AffiliateSite.WebApi.Infrastructure;
-using AffiliateSite.WebApi.Services;
+﻿using AffiliateSite.WebApi.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace AffiliateSite.WebApi.Controllers
+namespace AffiliateSite.WebApi.Affiliate
 {
     [Route("api/Affiliate")]
     [ApiController]
@@ -17,7 +15,7 @@ namespace AffiliateSite.WebApi.Controllers
 
         [Route("Signup")]
         [HttpPost]
-        public Task<ApiResult> Signup(Commands.Signup request) 
+        public Task<ApiResult> Signup(Commands.Signup request)
         {
             return RequestHandler.HandleCommand(request, _affiliateService.Handle, _log);
         }

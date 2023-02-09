@@ -1,5 +1,4 @@
-﻿using AffiliateSite.WebApi.Contracts;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
 namespace AffiliateSite.WebApi.Infrastructure

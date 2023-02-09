@@ -1,13 +1,9 @@
-﻿using AffiliateSite.WebApi.Contracts;
-using AffiliateSite.WebApi.Infrastructure;
-using AffiliateSite.WebApi.Services;
-using Microsoft.AspNetCore.Http;
+﻿using AffiliateSite.WebApi.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 using Serilog;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Controllers
+namespace AffiliateSite.WebApi.Affiliate
 {
     [Route("api/Affiliate")]
     [ApiController]
@@ -22,7 +18,7 @@ namespace AffiliateSite.WebApi.Controllers
 
         [HttpPost]
         [Route("StatementHistory")]
-        public Task<ApiResult> GetStatementHistory(QueryModels.GetAffiliateStatementHistory request) 
+        public Task<ApiResult> GetStatementHistory(QueryModels.GetAffiliateStatementHistory request)
         {
             return RequestHandler.HandleQuery(async () => await _connection.Query(request), _log);
         }

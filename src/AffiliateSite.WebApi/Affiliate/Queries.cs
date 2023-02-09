@@ -1,11 +1,11 @@
-﻿using AffiliateSite.WebApi.Contracts;
+﻿using AffiliateSite.WebApi.Infrastructure;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
-using static AffiliateSite.WebApi.Contracts.ReadModels;
+using static AffiliateSite.WebApi.Affiliate.ReadModels;
 
-namespace AffiliateSite.WebApi.Services
+namespace AffiliateSite.WebApi.Affiliate
 {
     public static class Queries
     {

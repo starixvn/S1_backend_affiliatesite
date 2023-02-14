@@ -1,4 +1,5 @@
 ﻿using AffiliateSite.Domain;
+using AffiliateSite.Framework;
 using AffiliateSite.WebApi.Affiliate;
 using AffiliateSite.WebApi.Infrastructure;
 using MySql.Data.MySqlClient;
@@ -13,7 +14,7 @@ namespace AffiliateSite.WebApi.Extensions
             var serviceType = configuration.GetValue<string>("ServiceType");
             var connectionStr = configuration.GetConnectionString($"{serviceType}_MainDB");
             var conAttribute = connectionStr.Split(';');
-            conAttribute[3] = "database=Affiliate";
+            conAttribute[3] = "database=Affiliate_N88";
             var affConnection = string.Join(";", conAttribute);
 
             services
@@ -25,7 +26,9 @@ namespace AffiliateSite.WebApi.Extensions
         
         public static IServiceCollection RegisterServices(this IServiceCollection services) =>
             services
-            .AddScoped<IAffiliateRepository, AffiliateRepository>()
+            .AddScoped<IAffIInfoRepository, AffInfoRepository>()
+            .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()
+            .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<ICrypto, Crypto>()
             .AddScoped<AffiliateService>();
     }

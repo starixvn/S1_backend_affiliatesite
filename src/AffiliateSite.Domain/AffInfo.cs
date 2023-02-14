@@ -7,32 +7,33 @@ using System.Threading.Tasks;
 
 namespace AffiliateSite.Domain
 {
-    public class Affiliate : AggregateRoot<AffId>
+    public class AffInfo : AggregateRoot<AffId>
     {
-        public AffId AffId { get; set; }
+        public AffId AffId { get; private set; }
         public AffiliateUserName UserName { get; private set; }
         public AffiliateFullName FullName { get; private set; }
-        public AffiliatePassword Password { get; private set; }
-        public AffiliateEmail Email { get; private set; }
-        public AffiliatePhone Phone { get; private set; }
-        public AffiliateContactApp ContactApp { get; private set; }
-        public AffiliateUserName PlayerUserName { get; private set; }
         public AffiliateStatus Status { get; private set; }
+        public AffiliateCurrency Currency { get; private set; }
+        public AffiliateEmail Email { get; private set; }
+        public AffiliatePassword Password { get; private set; }
+        public AffDetail AffDetail { get; private set; }
 
 
-        public Affiliate(AffiliateUserName userName, AffiliateFullName fullName) =>
+        public AffInfo(AffId affId, AffiliateUserName userName, AffiliateFullName fullName, AffiliateEmail email) =>
             Apply(new Events.AffiliateSignup
             {
+                AffId = affId,
                 UserName = userName,
                 FirstName = fullName.FirstName,
-                LastName = fullName.LastName
+                LastName = fullName.LastName,
+                Status = AffiliateStatus.Pending,
+                Email = email
             });
 
         public void ChangePassword(AffiliatePassword password) =>
             Apply(
                 new Events.AffiliateChangePassword
                 {
-                    UserName = UserName,
                     NewPassword = password.Value
                 }
             );
@@ -51,17 +52,14 @@ namespace AffiliateSite.Domain
             switch (@event) 
             {
                 case Events.AffiliateSignup e:
+                    AffId = new AffId(e.AffId);
                     UserName = new AffiliateUserName(e.UserName);
                     FullName = new AffiliateFullName(e.FirstName, e.LastName);
                     Status = AffiliateStatus.Pending;
+                    Email = new AffiliateEmail(e.Email);
                     break;
                 case Events.AffiliateChangePassword e:
-                    UserName = new AffiliateUserName(e.UserName);
                     Password = new AffiliatePassword(e.NewPassword);
-                    break;
-                case Events.AffiliateUpdateInformation e:
-                    Phone = new AffiliatePhone(e.Phone);
-                    ContactApp = new AffiliateContactApp(e.Skype, e.QQ);
                     break;
             }
         }
@@ -70,7 +68,9 @@ namespace AffiliateSite.Domain
         {
             Pending,
             Approved,
-            Reject
+            Disapproved,
+            Suspended,
+            Closed
         }
     }
 }

@@ -5,11 +5,16 @@ namespace AffiliateSite.WebApi.Affiliate
 {
     public class AffiliateService : IApplicationService
     {
-        private readonly IAffiliateRepository _repository;
+        private readonly IUsernameAutoIncrementRepository _autoIncrementRepository;
+        private readonly IAffIInfoRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ICrypto _crypto;
-        public AffiliateService(IAffiliateRepository repository, ICrypto crypto)
+        private const string PREFIX = "N88AFF";
+        public AffiliateService(IUsernameAutoIncrementRepository autoIncrementRepository, IAffIInfoRepository repository, IUnitOfWork unitOfWork, ICrypto crypto)
         {
+            _autoIncrementRepository = autoIncrementRepository;
             _repository = repository;
+            _unitOfWork = unitOfWork;
             _crypto = crypto;
         }
 
@@ -18,12 +23,11 @@ namespace AffiliateSite.WebApi.Affiliate
             switch (command)
             {
                 case Commands.Signup cmd:
-                    if (await _repository.Exists(cmd.PlayerUserName.ToString()))
-                        throw new InvalidOperationException($"Player Username {cmd.PlayerUserName} has been used. Please choose another one!");
-
-                    var classifiedAd = new Domain.Affiliate(new AffiliateUserName(cmd.PlayerUserName), new AffiliateFullName(cmd.FirstName, cmd.LastName));
-
-                    await _repository.Add(classifiedAd);
+                    await _unitOfWork.BeginTransactionAsync();
+                    var id = await _autoIncrementRepository.Generate(PREFIX, _unitOfWork.Transaction);
+                    var classifiedAd = new AffInfo(new AffId(id), new AffiliateUserName(PREFIX, id), new AffiliateFullName(cmd.FirstName, cmd.LastName), AffiliateEmail.FromString(cmd.Email));
+                    await _repository.Add(classifiedAd, _unitOfWork.Transaction);
+                    await _unitOfWork.CommitAsync();
                     break;
                 case Commands.ChangePassword cmd:
                     if (cmd.NewPassword != cmd.ConfirmNewPassword)

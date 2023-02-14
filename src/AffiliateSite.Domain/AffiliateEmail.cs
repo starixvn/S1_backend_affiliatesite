@@ -15,8 +15,6 @@ namespace AffiliateSite.Domain
         public string Value { get; }
         public static AffiliateEmail FromString(string value)
         {
-            if (IsValidEmail(value))
-                throw new InvalidOperationException("Invalid email format");
             return new AffiliateEmail(value);
         }
 

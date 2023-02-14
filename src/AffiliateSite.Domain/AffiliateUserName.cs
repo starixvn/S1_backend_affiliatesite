@@ -7,35 +7,23 @@ using System.Threading.Tasks;
 
 namespace AffiliateSite.Domain
 {
-    public class AffiliateUserName : IEquatable<AffiliateUserName>
+    public class AffiliateUserName : ValueObject<AffiliateUserName>
     {
-        public string UserName { get; }
+        public string Value { get; }
         public AffiliateUserName(string userName)
         {
             if (string.IsNullOrEmpty(userName))
                 throw new ArgumentNullException(nameof(userName), " Affiliate user name cannot be empty");
 
-            UserName = userName;
+            Value = userName;
         }
-        public static implicit operator string(AffiliateUserName userName) => userName.UserName;
-        public bool Equals(AffiliateUserName other)
+        public AffiliateUserName(string prefixName, int id)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return UserName.Equals(other.UserName);
-        }
+            if (string.IsNullOrEmpty(prefixName))
+                throw new ArgumentNullException(nameof(prefixName), " Affiliate prefixName cannot be empty");
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((AffiliateUserName)obj);
+            Value = prefixName + id.ToString("D3");
         }
-
-        public override int GetHashCode()
-        {
-            return UserName.GetHashCode();
-        }
+        public static implicit operator string(AffiliateUserName userName) => userName.Value;
     }
 }

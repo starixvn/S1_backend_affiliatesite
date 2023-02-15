@@ -1,10 +1,10 @@
-﻿using AffiliateSite.WebApi.Infrastructure;
+﻿using AffiliateSite.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Affiliate
+namespace AffiliateSite.Affiliate
 {
     [Authorize, ApiController, Route("api/Affiliate")]
     public class AffiliateQueryApi : ControllerBase

@@ -1,8 +1,8 @@
-﻿using AffiliateSite.WebApi.Affiliate;
-using AffiliateSite.WebApi.Infrastructure;
+﻿using AffiliateSite.Affiliate;
+using AffiliateSite.Infrastructure;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Auth
+namespace AffiliateSite.Auth
 {
     public class AuthService
     {
@@ -13,9 +13,9 @@ namespace AffiliateSite.WebApi.Auth
             _connection = connection;
         }
 
-        public async Task<ReadModels.AffInfo> Sign(string userName, string password) 
+        public async Task<ReadModels.AffInfo> Sign(string userName, string password)
         {
-            var affInfo = await  _connection.GetAffInfo(userName);
+            var affInfo = await _connection.GetAffInfo(userName);
             if (!string.Equals(affInfo.Password, CryptographyHelper.Encrypt(password)))
                 throw new Exception("wrong password");
 

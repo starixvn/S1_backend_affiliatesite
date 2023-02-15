@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace AffiliateSite.WebApi.Auth
+namespace AffiliateSite.Auth
 {
     [Route("api/Auth")]
     [ApiController]
@@ -17,7 +17,7 @@ namespace AffiliateSite.WebApi.Auth
         }
 
         [HttpPost, Route("Signin")]
-        public async Task<IActionResult> Signin(Contracts.Signin request) 
+        public async Task<IActionResult> Signin(Contracts.Signin request)
         {
             var affInfo = await _authService.Sign(request.UserName, request.Password);
 

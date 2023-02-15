@@ -1,10 +1,10 @@
-﻿using AffiliateSite.WebApi.Infrastructure;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using AffiliateSite.Infrastructure;
 
-namespace AffiliateSite.WebApi.Affiliate
+namespace AffiliateSite.Affiliate
 {
     [Route("api/Affiliate")]
     [ApiController]

@@ -1,16 +1,16 @@
-﻿using AffiliateSite.Domain;
+﻿using AffiliateSite.Affiliate;
+using AffiliateSite.Auth;
+using AffiliateSite.Domain;
 using AffiliateSite.Framework;
-using AffiliateSite.WebApi.Affiliate;
-using AffiliateSite.WebApi.Auth;
-using AffiliateSite.WebApi.Infrastructure;
+using AffiliateSite.Infrastructure;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Extensions
+namespace AffiliateSite.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddDatabaseConnection(this IServiceCollection services, IConfiguration configuration) 
+        public static IServiceCollection AddDatabaseConnection(this IServiceCollection services, IConfiguration configuration)
         {
             var serviceType = configuration.GetValue<string>("ServiceType");
             var site = configuration.GetValue<string>("Site");
@@ -25,8 +25,8 @@ namespace AffiliateSite.WebApi.Extensions
 
             return services;
         }
-            
-        
+
+
         public static IServiceCollection RegisterServices(this IServiceCollection services) =>
             services
             .AddScoped<CustomCookieAuthenticationEvents>()

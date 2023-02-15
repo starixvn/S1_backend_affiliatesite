@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.WebApi.Infrastructure
+namespace AffiliateSite.Infrastructure
 {
     public interface ISelLang
     {

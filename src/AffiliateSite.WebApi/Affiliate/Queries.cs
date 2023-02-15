@@ -1,11 +1,11 @@
-﻿using AffiliateSite.WebApi.Infrastructure;
+﻿using AffiliateSite.Infrastructure;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
-using static AffiliateSite.WebApi.Affiliate.ReadModels;
+using static AffiliateSite.Affiliate.ReadModels;
 
-namespace AffiliateSite.WebApi.Affiliate
+namespace AffiliateSite.Affiliate
 {
     public static class Queries
     {
@@ -35,7 +35,7 @@ namespace AffiliateSite.WebApi.Affiliate
 
         public static async Task<AffInfo> GetAffInfo(
             this DbConnection connection,
-            string userName) 
+            string userName)
         {
             var para = new
             {

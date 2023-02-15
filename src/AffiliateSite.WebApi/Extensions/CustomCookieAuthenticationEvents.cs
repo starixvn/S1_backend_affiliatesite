@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace AffiliateSite.WebApi.Extensions
+namespace AffiliateSite.Extensions
 {
     public class CustomCookieAuthenticationEvents : CookieAuthenticationEvents
     {

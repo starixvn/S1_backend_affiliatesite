@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
-namespace AffiliateSite.WebApi.Infrastructure
+namespace AffiliateSite.Infrastructure
 {
     public static class CryptoDES
     {
@@ -55,13 +55,13 @@ namespace AffiliateSite.WebApi.Infrastructure
             {
                 bytes = rfc2898DeriveBytes.GetBytes(PBKDF2SubkeyLength);
             }
-            return CryptoDES.ByteArraysEqual(array3, bytes);
+            return ByteArraysEqual(array3, bytes);
         }
 
         [MethodImpl(MethodImplOptions.NoOptimization)]
         private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
-            if (object.ReferenceEquals(a, b))
+            if (ReferenceEquals(a, b))
             {
                 return true;
             }
@@ -72,7 +72,7 @@ namespace AffiliateSite.WebApi.Infrastructure
             bool flag = true;
             for (int i = 0; i < a.Length; i++)
             {
-                flag &= (a[i] == b[i]);
+                flag &= a[i] == b[i];
             }
             return flag;
         }

@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.WebApi.Affiliate
+﻿namespace AffiliateSite.Affiliate
 {
     public static class ReadModels
     {
@@ -12,7 +12,7 @@
             public string CalculatedType { get; set; }
         }
 
-        public class AffInfo 
+        public class AffInfo
         {
             public int AffId { get; set; }
             public string UserName { get; set; }

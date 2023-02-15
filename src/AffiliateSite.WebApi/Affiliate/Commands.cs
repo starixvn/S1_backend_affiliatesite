@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.WebApi.Affiliate
+﻿namespace AffiliateSite.Affiliate
 {
     public static class Commands
     {

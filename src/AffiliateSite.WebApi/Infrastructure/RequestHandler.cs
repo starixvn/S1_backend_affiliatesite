@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace AffiliateSite.WebApi.Infrastructure
+namespace AffiliateSite.Infrastructure
 {
     public static class RequestHandler
     {
@@ -18,16 +18,16 @@ namespace AffiliateSite.WebApi.Infrastructure
                 return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Failed, Message = e.Message };
             }
         }
-        public static async Task<ApiResult> HandleQuery(Func<Task<ApiResult>> query, Serilog.ILogger log) 
+        public static async Task<ApiResult> HandleQuery(Func<Task<ApiResult>> query, Serilog.ILogger log)
         {
-			try
-			{
-				return await query();
-			}
-			catch (Exception ex)
-			{
+            try
+            {
+                return await query();
+            }
+            catch (Exception ex)
+            {
                 log.Error(ex, "Error handling the query");
-                return new ApiResult 
+                return new ApiResult
                 {
                     ErrorCode = (int)ErrorCodeEnum.SystemError,
                     Message = ex.Message,

@@ -1,4 +1,4 @@
-﻿using AffiliateSite.WebApi.Infrastructure;
+﻿using AffiliateSite.Infrastructure;
 using FluentAssertions;
 
 namespace AffiliateSite.UnitTests

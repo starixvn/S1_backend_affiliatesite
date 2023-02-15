@@ -1,8 +1,8 @@
 ﻿using AffiliateSite.Domain;
 using AffiliateSite.Framework;
-using AffiliateSite.WebApi.Infrastructure;
+using AffiliateSite.Infrastructure;
 
-namespace AffiliateSite.WebApi.Affiliate
+namespace AffiliateSite.Affiliate
 {
     public class AffiliateService : IApplicationService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 
-namespace AffiliateSite.WebApi.Extensions.Middlewares
+namespace AffiliateSite.Extensions.Middlewares
 {
     public class ResponseLogMiddleware
     {

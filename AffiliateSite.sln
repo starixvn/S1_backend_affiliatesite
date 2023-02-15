@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.WebApi", "src\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj", "{8E270E9F-B2A9-45F8-A4C7-CD4AF8CC575B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite", "src\AffiliateSite.WebApi\AffiliateSite.csproj", "{8E270E9F-B2A9-45F8-A4C7-CD4AF8CC575B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Framework", "src\AffiliateSite.Framework\AffiliateSite.Framework.csproj", "{DB8F9ACD-F54D-4A1C-B751-9F3025E7F7E3}"
 EndProject

@@ -3,7 +3,7 @@ using Dapper;
 using System.Data;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Affiliate
+namespace AffiliateSite.Affiliate
 {
     public class AffInfoRepository : IAffIInfoRepository
     {

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Serilog.Context;
 using System.Text;
 
-namespace AffiliateSite.WebApi.Extensions.Middlewares
+namespace AffiliateSite.Extensions.Middlewares
 {
     public class RequestLogMiddleware
     {

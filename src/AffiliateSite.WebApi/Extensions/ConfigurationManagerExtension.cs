@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.WebApi.Extensions
+﻿namespace AffiliateSite.Extensions
 {
     public static class ConfigurationManagerExtension
     {

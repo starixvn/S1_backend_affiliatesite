@@ -1,6 +1,6 @@
-﻿using AffiliateSite.WebApi.Extensions.Middlewares;
+﻿using AffiliateSite.Extensions.Middlewares;
 
-namespace AffiliateSite.WebApi.Extensions
+namespace AffiliateSite.Extensions
 {
     public static class CustomMiddlewareExtension
     {

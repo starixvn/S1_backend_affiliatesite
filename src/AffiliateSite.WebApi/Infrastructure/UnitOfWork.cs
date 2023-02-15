@@ -1,7 +1,7 @@
 ﻿using AffiliateSite.Framework;
 using System.Data.Common;
 
-namespace AffiliateSite.WebApi.Infrastructure
+namespace AffiliateSite.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -19,13 +19,13 @@ namespace AffiliateSite.WebApi.Infrastructure
             _transaction = await _connection.BeginTransactionAsync();
         }
 
-        public async Task CommitAsync() 
+        public async Task CommitAsync()
         {
             await _transaction.CommitAsync();
             await _connection.CloseAsync();
         }
 
-        public async Task RollbackAsync() 
+        public async Task RollbackAsync()
         {
             await _transaction.RollbackAsync();
             await _connection.CloseAsync();

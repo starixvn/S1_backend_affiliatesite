@@ -1,4 +1,4 @@
-using AffiliateSite.WebApi.Extensions;
+using AffiliateSite.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 using Serilog.Exceptions;

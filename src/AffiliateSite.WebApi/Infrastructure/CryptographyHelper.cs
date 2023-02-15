@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace AffiliateSite.WebApi.Infrastructure
+namespace AffiliateSite.Infrastructure
 {
     public static class CryptographyHelper
     {

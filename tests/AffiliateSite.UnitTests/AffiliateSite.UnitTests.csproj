@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AffiliateSite.WebApi\AffiliateSite.csproj" />
+    <ProjectReference Include="..\..\src\AffiliateSite\AffiliateSite.csproj" />
   </ItemGroup>
 
 </Project>

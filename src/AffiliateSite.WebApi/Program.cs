@@ -1,4 +1,5 @@
 using AffiliateSite.WebApi.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 using Serilog.Exceptions;
 
@@ -23,12 +24,22 @@ builder.Host.UseSerilog((context, configuration) =>
 builder.Services
     .AddDatabaseConnection(builder.Configuration)
     .RegisterServices()
-    .AddControllers();
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option => 
+    {
+        option.Cookie.Name = ".AFF";
+        option.ExpireTimeSpan = TimeSpan.FromDays(1);
+        option.EventsType = typeof(CustomCookieAuthenticationEvents);
+        option.Cookie.SameSite = SameSiteMode.Unspecified;
+    });
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 app.UseRouting();
 app.UseRequestLogMiddleware();
 app.UseResponseLogMiddleware();
+app.UseAuthentication();
 app.UseAuthorization();
 
 

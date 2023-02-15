@@ -1,5 +1,6 @@
 ﻿using AffiliateSite.Domain;
 using AffiliateSite.Framework;
+using AffiliateSite.WebApi.Infrastructure;
 
 namespace AffiliateSite.WebApi.Affiliate
 {
@@ -8,14 +9,12 @@ namespace AffiliateSite.WebApi.Affiliate
         private readonly IUsernameAutoIncrementRepository _autoIncrementRepository;
         private readonly IAffIInfoRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICrypto _crypto;
         private const string PREFIX = "N88AFF";
-        public AffiliateService(IUsernameAutoIncrementRepository autoIncrementRepository, IAffIInfoRepository repository, IUnitOfWork unitOfWork, ICrypto crypto)
+        public AffiliateService(IUsernameAutoIncrementRepository autoIncrementRepository, IAffIInfoRepository repository, IUnitOfWork unitOfWork)
         {
             _autoIncrementRepository = autoIncrementRepository;
             _repository = repository;
             _unitOfWork = unitOfWork;
-            _crypto = crypto;
         }
 
         public async Task Handle(object command)
@@ -37,9 +36,7 @@ namespace AffiliateSite.WebApi.Affiliate
                     if (affiliate == null)
                         throw new InvalidOperationException($"Entity with id {cmd.UserName} cannot be found");
 
-                    if (_crypto.VerifyHashedPassword(affiliate.Password, cmd.OldPassword))
-                        throw new InvalidOperationException($"Old password is incorrect");
-                    affiliate.ChangePassword(AffiliatePassword.FromString(cmd.NewPassword, _crypto));
+                    affiliate.ChangePassword(AffiliatePassword.FromString(CryptographyHelper.Encrypt(cmd.NewPassword)));
                     await _repository.UpdatePassword(affiliate);
                     break;
                 case Commands.UpdateInformation cmd:

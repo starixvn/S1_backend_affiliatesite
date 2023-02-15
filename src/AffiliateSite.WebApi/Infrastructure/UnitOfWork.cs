@@ -13,15 +13,24 @@ namespace AffiliateSite.WebApi.Infrastructure
         }
         public DbConnection Connection => _connection;
         public DbTransaction Transaction => _transaction;
-        public async Task BeginTransactionAsync() 
+        public async Task BeginTransactionAsync()
         {
             await _connection.OpenAsync();
             _transaction = await _connection.BeginTransactionAsync();
-        } 
+        }
 
-        public async Task CommitAsync() => await _transaction.CommitAsync();
+        public async Task CommitAsync() 
+        {
+            await _transaction.CommitAsync();
+            await _connection.CloseAsync();
+        }
 
-        public async Task RollbackAsync() => await _transaction.RollbackAsync();
+        public async Task RollbackAsync() 
+        {
+            await _transaction.RollbackAsync();
+            await _connection.CloseAsync();
+        }
+
         public void Dispose()
         {
             if (_transaction != null)

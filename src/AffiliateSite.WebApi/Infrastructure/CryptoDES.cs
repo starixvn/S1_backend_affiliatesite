@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace AffiliateSite.WebApi.Infrastructure
 {
-    public class Crypto : ICrypto
+    public static class CryptoDES
     {
         private const int PBKDF2IterCount = 1000;
 
@@ -12,7 +12,7 @@ namespace AffiliateSite.WebApi.Infrastructure
 
         private const int SaltSize = 16;
 
-        public string HashPassword(string password)
+        public static string Encrypt(string password)
         {
             if (password == null)
             {
@@ -31,7 +31,7 @@ namespace AffiliateSite.WebApi.Infrastructure
             return Convert.ToBase64String(array);
         }
 
-        public bool VerifyHashedPassword(string hashedPassword, string password)
+        public static bool VerifyHashedPassword(string hashedPassword, string password)
         {
             if (hashedPassword == null)
             {
@@ -55,7 +55,7 @@ namespace AffiliateSite.WebApi.Infrastructure
             {
                 bytes = rfc2898DeriveBytes.GetBytes(PBKDF2SubkeyLength);
             }
-            return Crypto.ByteArraysEqual(array3, bytes);
+            return CryptoDES.ByteArraysEqual(array3, bytes);
         }
 
         [MethodImpl(MethodImplOptions.NoOptimization)]

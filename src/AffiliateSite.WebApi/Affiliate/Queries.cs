@@ -32,5 +32,16 @@ namespace AffiliateSite.WebApi.Affiliate
                 RowCount = para.Get<int?>("_RowCount") ?? 0
             };
         }
+
+        public static async Task<AffInfo> GetAffInfo(
+            this DbConnection connection,
+            string userName) 
+        {
+            var para = new
+            {
+                _UserName = userName
+            };
+            return await connection.QueryFirstAsync<AffInfo>("Affiliate_AffInfo_Get", para, commandType: CommandType.StoredProcedure);
+        }
     }
 }

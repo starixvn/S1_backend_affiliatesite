@@ -11,5 +11,12 @@
             public string Description { get; set; }
             public string CalculatedType { get; set; }
         }
+
+        public class AffInfo 
+        {
+            public int AffId { get; set; }
+            public string UserName { get; set; }
+            public string Password { get; set; }
+        }
     }
 }

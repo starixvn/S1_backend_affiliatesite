@@ -6,12 +6,14 @@ namespace AffiliateSite.Affiliate
 {
     public class AffiliateService : IApplicationService
     {
+        private readonly ICustomerRepository _customerRepository;
         private readonly IUsernameAutoIncrementRepository _autoIncrementRepository;
         private readonly IAffIInfoRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
         private const string PREFIX = "N88AFF";
-        public AffiliateService(IUsernameAutoIncrementRepository autoIncrementRepository, IAffIInfoRepository repository, IUnitOfWork unitOfWork)
+        public AffiliateService(ICustomerRepository customerRepository, IUsernameAutoIncrementRepository autoIncrementRepository, IAffIInfoRepository repository, IUnitOfWork unitOfWork)
         {
+            _customerRepository = customerRepository;
             _autoIncrementRepository = autoIncrementRepository;
             _repository = repository;
             _unitOfWork = unitOfWork;
@@ -22,6 +24,10 @@ namespace AffiliateSite.Affiliate
             switch (command)
             {
                 case Commands.Signup cmd:
+                    var customer = await _customerRepository.Load(cmd.PlayerUserName);
+                    if(customer == null)
+                        throw new InvalidOperationException($"Player {cmd.PlayerUserName} cannot be found");
+
                     await _unitOfWork.BeginTransactionAsync();
                     var id = await _autoIncrementRepository.Generate(PREFIX, _unitOfWork.Transaction);
                     var classifiedAd = new AffInfo(new AffId(id), new AffiliateUserName(PREFIX, id), new AffiliateFullName(cmd.FirstName, cmd.LastName), AffiliateEmail.FromString(cmd.Email));
@@ -29,7 +35,7 @@ namespace AffiliateSite.Affiliate
                     await _unitOfWork.CommitAsync();
                     break;
                 case Commands.ChangePassword cmd:
-                    if (cmd.NewPassword != cmd.ConfirmNewPassword)
+                    if (!string.Equals(cmd.NewPassword, cmd.ConfirmNewPassword))
                         throw new InvalidOperationException($"{cmd.NewPassword} and {cmd.ConfirmNewPassword} is not match");
 
                     var affiliate = await _repository.Load(cmd.UserName);

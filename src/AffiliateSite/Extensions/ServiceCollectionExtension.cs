@@ -31,6 +31,7 @@ namespace AffiliateSite.Extensions
             services
             .AddScoped<CustomCookieAuthenticationEvents>()
             .AddScoped<IAffIInfoRepository, AffInfoRepository>()
+            .AddScoped<ICustomerRepository, CustomerRepository>()
             .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<AffiliateService>()

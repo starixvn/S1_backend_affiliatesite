@@ -35,7 +35,7 @@ namespace AffiliateSite.Affiliate
 
         public async Task<AffInfo> Load(string userNmae)
         {
-            return await _connection.QueryFirstAsync<AffInfo>("", new { }, commandType: CommandType.StoredProcedure);
+            return await _connection.QueryFirstAsync<AffInfo>("Affiliate_AffInfo_Get", new { _UserName = userNmae }, commandType: CommandType.StoredProcedure);
         }
 
         public async Task UpdateInformation(AffInfo entity)

@@ -25,5 +25,6 @@ namespace AffiliateSite.Domain
             Value = prefixName + id.ToString("D3");
         }
         public static implicit operator string(AffiliateUserName userName) => userName.Value;
+        public static implicit operator AffiliateUserName(string value) => new(value);
     }
 }

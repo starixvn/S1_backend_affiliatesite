@@ -36,11 +36,14 @@ namespace AffiliateSite.Affiliate
                     break;
                 case Commands.ChangePassword cmd:
                     if (!string.Equals(cmd.NewPassword, cmd.ConfirmNewPassword))
-                        throw new InvalidOperationException($"{cmd.NewPassword} and {cmd.ConfirmNewPassword} is not match");
+                        throw new InvalidOperationException("The new password and confirm password is not match");
 
                     var affiliate = await _repository.Load(cmd.UserName);
                     if (affiliate == null)
                         throw new InvalidOperationException($"Entity with id {cmd.UserName} cannot be found");
+
+                    if (!string.Equals(affiliate.Password, CryptographyHelper.Encrypt(cmd.OldPassword)))
+                        throw new InvalidOperationException("Wrong old password");
 
                     affiliate.ChangePassword(AffiliatePassword.FromString(CryptographyHelper.Encrypt(cmd.NewPassword)));
                     await _repository.UpdatePassword(affiliate);

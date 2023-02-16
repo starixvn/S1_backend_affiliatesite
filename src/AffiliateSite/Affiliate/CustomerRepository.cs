@@ -11,7 +11,7 @@ namespace AffiliateSite.Affiliate
 
         public CustomerRepository(IEnumerable<DbConnection> connections)
         {
-            _connection = connections.FirstOrDefault();
+            _connection = connections.FirstOrDefault(a => a.Database == "Siebog");
         }
 
         public async Task<Customer> Load(string playerUserName)

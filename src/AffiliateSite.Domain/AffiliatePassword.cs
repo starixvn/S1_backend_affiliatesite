@@ -16,5 +16,6 @@ namespace AffiliateSite.Domain
             Value = password;
         }
         public static implicit operator string(AffiliatePassword password) => password.Value;
+        public static implicit operator AffiliatePassword(string value) => new AffiliatePassword(value);
     }
 }

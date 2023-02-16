@@ -18,5 +18,6 @@ namespace AffiliateSite.Domain
             Value = value;
         }
         public static implicit operator int(AffId self) => self.Value;
+        public static implicit operator AffId(int value) => new (value);
     }
 }

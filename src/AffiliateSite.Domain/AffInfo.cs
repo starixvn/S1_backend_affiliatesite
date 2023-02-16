@@ -18,6 +18,7 @@ namespace AffiliateSite.Domain
         public AffiliatePassword Password { get; private set; }
         public AffDetail AffDetail { get; private set; }
 
+        public AffInfo() { }
 
         public AffInfo(AffId affId, AffiliateUserName userName, AffiliateFullName fullName, AffiliateEmail email) =>
             Apply(new Events.AffiliateSignup

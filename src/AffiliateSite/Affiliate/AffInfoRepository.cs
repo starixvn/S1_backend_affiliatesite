@@ -44,6 +44,7 @@ namespace AffiliateSite.Affiliate
 
         public async Task UpdatePassword(AffInfo entity)
         {
+            await _connection.ExecuteAsync("Affiliate_AffInfoPassword_Set", new { _AffId = (int)entity.AffId, _Password = entity.Password.ToString() }, commandType: CommandType.StoredProcedure);
         }
     }
 }

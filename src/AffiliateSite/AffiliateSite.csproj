@@ -17,5 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AffiliateSite.Domain\AffiliateSite.Domain.csproj" />
     <ProjectReference Include="..\AffiliateSite.Framework\AffiliateSite.Framework.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Link\AffiliateSite.Link.csproj" />
   </ItemGroup>
 </Project>

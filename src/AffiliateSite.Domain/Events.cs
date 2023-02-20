@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static AffiliateSite.Domain.AffInfo;
+using static AffiliateSite.Users.Domain.AffInfo;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public static class Events
     {
-        public class AffiliateSignup 
+        public class AffiliateSignup
         {
             public int AffId { get; set; }
             public string FirstName { get; set; }
@@ -19,7 +19,7 @@ namespace AffiliateSite.Domain
             public string Email { get; set; }
         }
 
-        public class AffiliateChangePassword 
+        public class AffiliateChangePassword
         {
             public string NewPassword { get; set; }
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffId : ValueObject<AffId>
     {
@@ -18,6 +18,6 @@ namespace AffiliateSite.Domain
             Value = value;
         }
         public static implicit operator int(AffId self) => self.Value;
-        public static implicit operator AffId(int value) => new (value);
+        public static implicit operator AffId(int value) => new(value);
     }
 }

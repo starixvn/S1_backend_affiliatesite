@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.Domain
+﻿namespace AffiliateSite.Users.Domain
 {
     public class PlayerUserName
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffInfo : AggregateRoot<AffId>
     {
@@ -41,7 +41,7 @@ namespace AffiliateSite.Domain
 
         public void UpdateInformation(AffiliatePhone phone, AffiliateContactApp contactApp) =>
             Apply(
-                new Events.AffiliateUpdateInformation 
+                new Events.AffiliateUpdateInformation
                 {
                     Phone = phone,
                     Skype = contactApp.Skype,
@@ -50,7 +50,7 @@ namespace AffiliateSite.Domain
 
         protected override void When(object @event)
         {
-            switch (@event) 
+            switch (@event)
             {
                 case Events.AffiliateSignup e:
                     AffId = new AffId(e.AffId);
@@ -65,7 +65,7 @@ namespace AffiliateSite.Domain
             }
         }
 
-        public enum AffiliateStatus 
+        public enum AffiliateStatus
         {
             Pending,
             Approved,

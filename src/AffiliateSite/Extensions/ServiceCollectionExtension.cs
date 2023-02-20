@@ -1,8 +1,8 @@
 ﻿using AffiliateSite.Affiliate;
 using AffiliateSite.Auth;
-using AffiliateSite.Domain;
 using AffiliateSite.Framework;
 using AffiliateSite.Infrastructure;
+using AffiliateSite.Users.Domain;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
 

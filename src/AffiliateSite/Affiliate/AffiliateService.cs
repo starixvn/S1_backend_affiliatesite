@@ -1,4 +1,4 @@
-﻿using AffiliateSite.Domain;
+﻿using AffiliateSite.Users.Domain;
 using AffiliateSite.Framework;
 using AffiliateSite.Infrastructure;
 

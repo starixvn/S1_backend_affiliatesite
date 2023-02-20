@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffiliateEmail : ValueObject<AffiliateEmail>
     {

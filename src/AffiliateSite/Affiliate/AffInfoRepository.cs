@@ -1,4 +1,4 @@
-﻿using AffiliateSite.Domain;
+﻿using AffiliateSite.Users.Domain;
 using Dapper;
 using System.Data;
 using System.Data.Common;

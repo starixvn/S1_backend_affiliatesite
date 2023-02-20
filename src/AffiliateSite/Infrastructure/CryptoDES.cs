@@ -1,4 +1,4 @@
-﻿using AffiliateSite.Domain;
+﻿using AffiliateSite.Users.Domain;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 

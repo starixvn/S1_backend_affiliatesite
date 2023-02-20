@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffiliatePhone
     {
@@ -19,5 +19,5 @@ namespace AffiliateSite.Domain
 
         public static implicit operator string(AffiliatePhone email) => email.Value;
     }
-    
+
 }

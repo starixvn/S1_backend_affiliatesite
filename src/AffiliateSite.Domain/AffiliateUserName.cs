@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffiliateUserName : ValueObject<AffiliateUserName>
     {

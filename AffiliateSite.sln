@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite", "src\Affili
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Framework", "src\AffiliateSite.Framework\AffiliateSite.Framework.csproj", "{DB8F9ACD-F54D-4A1C-B751-9F3025E7F7E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Domain", "src\AffiliateSite.Domain\AffiliateSite.Domain.csproj", "{D16C4222-F2D9-4846-91CC-3D2131979402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Users.Domain", "src\AffiliateSite.Domain\AffiliateSite.Users.Domain.csproj", "{D16C4222-F2D9-4846-91CC-3D2131979402}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0174F6BF-1AA9-46BC-9624-2DA9A3C401CA}"
 EndProject
@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.UnitTests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{E5CE3A6B-8183-4879-A204-DBDEC9756FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.WebApi", "src\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj", "{DDE3923C-D773-41E2-B6B0-1CB26C8BC596}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.WebApi", "src\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj", "{DDE3923C-D773-41E2-B6B0-1CB26C8BC596}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Link", "src\AffiliateSite.Link\AffiliateSite.Link.csproj", "{6DAFBEC0-EC6A-4C62-A40B-A1E48FA84F93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Link", "src\AffiliateSite.Link\AffiliateSite.Link.csproj", "{6DAFBEC0-EC6A-4C62-A40B-A1E48FA84F93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

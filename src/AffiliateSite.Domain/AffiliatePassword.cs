@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffiliatePassword : ValueObject<AffiliatePassword>
     {
         public string Value { get; private set; }
-        public static AffiliatePassword FromString(string password) => new (password);
+        public static AffiliatePassword FromString(string password) => new(password);
         internal AffiliatePassword(string password)
         {
             Value = password;

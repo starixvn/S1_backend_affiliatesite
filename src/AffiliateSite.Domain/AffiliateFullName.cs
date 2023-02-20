@@ -1,6 +1,6 @@
 ﻿using AffiliateSite.Framework;
 
-namespace AffiliateSite.Domain
+namespace AffiliateSite.Users.Domain
 {
     public class AffiliateFullName : ValueObject<AffiliateFullName>
     {

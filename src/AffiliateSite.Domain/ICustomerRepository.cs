@@ -1,5 +1,4 @@
-﻿
-namespace AffiliateSite.Domain
+﻿namespace AffiliateSite.Users.Domain
 {
     public interface ICustomerRepository
     {

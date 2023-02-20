@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.Affiliate
+﻿namespace AffiliateSite.Users.Affiliate
 {
     public static class QueryModels
     {

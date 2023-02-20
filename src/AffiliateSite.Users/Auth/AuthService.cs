@@ -1,8 +1,8 @@
-﻿using AffiliateSite.Affiliate;
-using AffiliateSite.Infrastructure;
+﻿using AffiliateSite.Infrastructure;
 using System.Data.Common;
+using AffiliateSite.Users.Affiliate;
 
-namespace AffiliateSite.Auth
+namespace AffiliateSite.Users.Auth
 {
     public class AuthService
     {

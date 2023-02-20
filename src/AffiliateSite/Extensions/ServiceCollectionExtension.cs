@@ -1,9 +1,4 @@
-﻿using AffiliateSite.Affiliate;
-using AffiliateSite.Auth;
-using AffiliateSite.Framework;
-using AffiliateSite.Infrastructure;
-using AffiliateSite.Users.Domain;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Data.Common;
 
 namespace AffiliateSite.Extensions
@@ -25,16 +20,5 @@ namespace AffiliateSite.Extensions
 
             return services;
         }
-
-
-        public static IServiceCollection RegisterServices(this IServiceCollection services) =>
-            services
-            .AddScoped<CustomCookieAuthenticationEvents>()
-            .AddScoped<IAffIInfoRepository, AffInfoRepository>()
-            .AddScoped<ICustomerRepository, CustomerRepository>()
-            .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()
-            .AddScoped<IUnitOfWork, UnitOfWork>()
-            .AddScoped<AffiliateService>()
-            .AddScoped<AuthService>();
     }
 }

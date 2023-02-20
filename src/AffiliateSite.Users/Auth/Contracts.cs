@@ -1,4 +1,4 @@
-﻿namespace AffiliateSite.Auth
+﻿namespace AffiliateSite.Users.Auth
 {
     public static class Contracts
     {

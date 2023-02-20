@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Serilog;
+﻿using Microsoft.Extensions.Logging;
 
 namespace AffiliateSite.Infrastructure
 {
     public static class RequestHandler
     {
-        public static async Task<ApiResult> HandleCommand<T>(T request, Func<T, Task> handler, Serilog.ILogger log)
+        public static async Task<ApiResult> HandleCommand<T>(T request, Func<T, Task> handler, ILogger log)
         {
             try
             {
@@ -14,11 +13,11 @@ namespace AffiliateSite.Infrastructure
             }
             catch (Exception e)
             {
-                Log.Error(e, "Error handling the request");
+                log.LogError(e, "Error handling the request");
                 return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Failed, Message = e.Message };
             }
         }
-        public static async Task<ApiResult> HandleQuery(Func<Task<ApiResult>> query, Serilog.ILogger log)
+        public static async Task<ApiResult> HandleQuery(Func<Task<ApiResult>> query, ILogger log)
         {
             try
             {
@@ -26,7 +25,7 @@ namespace AffiliateSite.Infrastructure
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error handling the query");
+                log.LogError(ex, "Error handling the query");
                 return new ApiResult
                 {
                     ErrorCode = (int)ErrorCodeEnum.SystemError,

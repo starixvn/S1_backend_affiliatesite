@@ -1,7 +1,6 @@
-﻿using AffiliateSite.Framework;
-using System.Data.Common;
+﻿using System.Data.Common;
 
-namespace AffiliateSite.Infrastructure
+namespace AffiliateSite.Framework
 {
     public class UnitOfWork : IUnitOfWork
     {

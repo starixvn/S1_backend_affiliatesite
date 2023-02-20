@@ -1,4 +1,10 @@
-﻿namespace AffiliateSite.Affiliate
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AffiliateSite.Users.Messages.Affiliate
 {
     public static class Commands
     {

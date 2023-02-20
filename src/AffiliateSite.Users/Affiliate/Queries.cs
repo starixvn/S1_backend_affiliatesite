@@ -1,11 +1,10 @@
 ﻿using AffiliateSite.Infrastructure;
 using Dapper;
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
-using static AffiliateSite.Affiliate.ReadModels;
+using static AffiliateSite.Users.Affiliate.ReadModels;
 
-namespace AffiliateSite.Affiliate
+namespace AffiliateSite.Users.Affiliate
 {
     public static class Queries
     {

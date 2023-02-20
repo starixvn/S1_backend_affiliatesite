@@ -1,5 +1,4 @@
-﻿using AffiliateSite.Users.Domain;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
 namespace AffiliateSite.Infrastructure

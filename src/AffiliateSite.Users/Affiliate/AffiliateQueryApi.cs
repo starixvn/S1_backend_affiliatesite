@@ -1,18 +1,19 @@
 ﻿using AffiliateSite.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System.Data.Common;
 
-namespace AffiliateSite.Affiliate
+namespace AffiliateSite.Users.Affiliate
 {
     [Authorize, ApiController, Route("api/Affiliate")]
     public class AffiliateQueryApi : ControllerBase
     {
         private readonly DbConnection _connection;
-        private static Serilog.ILogger _log = Log.ForContext<AffiliateQueryApi>();
-        public AffiliateQueryApi(DbConnection connection)
+        private readonly ILogger _log;
+        public AffiliateQueryApi(DbConnection connection, ILoggerFactory logger)
         {
+            _log = logger.CreateLogger(GetType());
             _connection = connection;
         }
 

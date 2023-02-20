@@ -1,4 +1,5 @@
 using AffiliateSite.Extensions;
+using AffiliateSite.Users;
 using AffiliateSite.WebApi;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
@@ -25,7 +26,8 @@ builder.Host.UseSerilog((context, configuration) =>
 builder.Services
     .AddDatabaseConnection(builder.Configuration)
     .AddHttpContextAccessor()
-    .RegisterServices()
+    .AddScoped<CustomCookieAuthenticationEvents>()
+    .AddUsersModule()
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => 
     {

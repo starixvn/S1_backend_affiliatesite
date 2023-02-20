@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AffiliateSite.Framework\AffiliateSite.Framework.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Infrastructure\AffiliateSite.Infrastructure.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Users.Domain\AffiliateSite.Users.Domain.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Users.Messages\AffiliateSite.Users.Messages.csproj" />
+    <ProjectReference Include="..\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj" />
+  </ItemGroup>
+
+</Project>

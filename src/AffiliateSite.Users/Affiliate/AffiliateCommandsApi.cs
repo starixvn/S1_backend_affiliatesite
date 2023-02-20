@@ -1,18 +1,21 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Serilog;
+﻿using Microsoft.AspNetCore.Mvc;
 using AffiliateSite.Infrastructure;
+using AffiliateSite.Users.Messages.Affiliate;
+using Microsoft.Extensions.Logging;
 
-namespace AffiliateSite.Affiliate
+namespace AffiliateSite.Users.Affiliate
 {
     [Route("api/Affiliate")]
     [ApiController]
     public class AffiliateCommandsApi : ControllerBase
     {
         private readonly AffiliateService _affiliateService;
-        private static Serilog.ILogger _log = Log.ForContext<AffiliateCommandsApi>();
-        public AffiliateCommandsApi(AffiliateService affiliateService) => _affiliateService = affiliateService;
+        private readonly ILogger _log;
+        public AffiliateCommandsApi(AffiliateService affiliateService, ILoggerFactory logger) 
+        {
+            _log = logger.CreateLogger(GetType());
+            _affiliateService = affiliateService;
+        } 
 
         [Route("Signup")]
         [HttpPost]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace AffiliateSite.Auth
+namespace AffiliateSite.Users.Auth
 {
     [Route("api/Auth")]
     [ApiController]

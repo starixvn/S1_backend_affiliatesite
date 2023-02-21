@@ -11,10 +11,9 @@ namespace AffiliateSite.Link.Domain
         public string AffLink { get; private set; }
         public MediaLinkStatus Status { get; set; }
         public AffMediaLink() { }
-        public AffMediaLink(AffMediaLinkId id, AffId affId, string channelCode, string languageCode, string affLink) =>
+        public AffMediaLink(AffId affId, string channelCode, string languageCode, string affLink) =>
             Apply(new Events.CreateMarketingLink
             {
-                Id = id,
                 AffId = affId,
                 ChannelCode = channelCode,
                 LanguageCode = languageCode,
@@ -31,7 +30,6 @@ namespace AffiliateSite.Link.Domain
             switch (@event)
             {
                 case Events.CreateMarketingLink e:
-                    Id = new AffMediaLinkId(e.Id);
                     AffId = new AffId(e.AffId);
                     ChannelCode = e.ChannelCode;
                     LanguageCode = e.LanguageCode;

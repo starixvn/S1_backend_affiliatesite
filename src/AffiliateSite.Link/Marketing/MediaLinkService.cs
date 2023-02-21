@@ -21,7 +21,7 @@ namespace AffiliateSite.Link.Marketing
 
                     if (mediaLink == null)
                     {
-                        mediaLink = new AffMediaLink(1, affId, cmd.ChannelCode, cmd.LanguageCode, cmd.AffLink);
+                        mediaLink = new AffMediaLink(affId, cmd.ChannelCode, cmd.LanguageCode, cmd.AffLink);
                         await _repository.Add(mediaLink);
                     }
                     else

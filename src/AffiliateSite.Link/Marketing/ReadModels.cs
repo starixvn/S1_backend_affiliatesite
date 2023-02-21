@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AffiliateSite.Link.AffiliateLink
+namespace AffiliateSite.Link.Marketing
 {
     public static class ReadModels
     {
-        public class AffiliateLinkDomain 
+        public class AffiliateLinkDomain
         {
             public int DomainId { get; set; }
             public string DomainName { get; set; }

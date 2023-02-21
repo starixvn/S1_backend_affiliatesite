@@ -1,4 +1,5 @@
 using AffiliateSite.Extensions;
+using AffiliateSite.Link;
 using AffiliateSite.Users;
 using AffiliateSite.WebApi;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,9 +37,11 @@ builder.Services
         option.EventsType = typeof(CustomCookieAuthenticationEvents);
         option.Cookie.SameSite = SameSiteMode.Unspecified;
     });
+
 builder.Services.AddMvcCore(
         options => options.Conventions.Add(new CommandConvention())
-    );
+    )
+    .AddLinkModule();
 builder.Services.AddControllers();
 
 var app = builder.Build();

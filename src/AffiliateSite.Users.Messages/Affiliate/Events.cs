@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static AffiliateSite.Users.Domain.AffInfo;
-
-namespace AffiliateSite.Users.Domain
+﻿
+namespace AffiliateSite.Users.Messages
 {
     public static class Events
     {
@@ -15,7 +9,6 @@ namespace AffiliateSite.Users.Domain
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string UserName { get; set; }
-            public AffiliateStatus Status { get; set; }
             public string Email { get; set; }
         }
 

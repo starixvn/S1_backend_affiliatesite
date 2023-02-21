@@ -15,7 +15,6 @@ namespace AffiliateSite.Users
     {
         public static IServiceCollection AddUsersModule(this IServiceCollection services) =>
             services
-            
             .AddScoped<IAffIInfoRepository, AffInfoRepository>()
             .AddScoped<ICustomerRepository, CustomerRepository>()
             .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()

@@ -18,7 +18,7 @@ namespace AffiliateSite.Users.Affiliate
         {
             await transaction.Connection.ExecuteAsync("Affiliate_AffInfo_Ins", new
             {
-                _AffId = (int)entity.AffId,
+                _AffId = (int)entity.Id,
                 _UserName = entity.UserName.ToString(),
                 _FirstName = entity.FullName.FirstName,
                 _LastName = entity.FullName.LastName,
@@ -38,13 +38,9 @@ namespace AffiliateSite.Users.Affiliate
             return await _connection.QueryFirstAsync<AffInfo>("Affiliate_AffInfo_Get", new { _UserName = userNmae }, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task UpdateInformation(AffInfo entity)
-        {
-        }
-
         public async Task UpdatePassword(AffInfo entity)
         {
-            await _connection.ExecuteAsync("Affiliate_AffInfoPassword_Set", new { _AffId = (int)entity.AffId, _Password = entity.Password.ToString() }, commandType: CommandType.StoredProcedure);
+            await _connection.ExecuteAsync("Affiliate_AffInfoPassword_Set", new { _AffId = (int)entity.Id, _Password = entity.Password.ToString() }, commandType: CommandType.StoredProcedure);
         }
     }
 }

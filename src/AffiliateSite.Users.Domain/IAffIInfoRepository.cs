@@ -15,6 +15,5 @@ namespace AffiliateSite.Users.Domain
 
         Task Add(AffInfo entity, DbTransaction transaction);
         Task UpdatePassword(AffInfo entity);
-        Task UpdateInformation(AffInfo entity);
     }
 }

@@ -1,11 +1,10 @@
-﻿using Dapper;
+﻿using AffiliateSite.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
-using static AffiliateSite.Link.AffiliateLink.ReadModels;
 
-namespace AffiliateSite.Link.AffiliateLink
+namespace AffiliateSite.Link.Marketing
 {
     [Authorize, Route("/api/AffiliateLink")]
     public class AffiliateLinkQueryApi : ControllerBase
@@ -20,9 +19,9 @@ namespace AffiliateSite.Link.AffiliateLink
         }
 
         [HttpPost, Route("GetDomain")]
-        public async Task<ApiResult> GetDomain(QueryModels.GetAffiliateLinkDomain request) 
+        public async Task<ApiResult> GetDomain(QueryModels.GetAffiliateLinkDomain request)
         {
-            if(int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
             {
                 return await _connection.Query(request, affId);
             }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AffiliateSite.Framework\AffiliateSite.Framework.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Users.Messages\AffiliateSite.Users.Messages.csproj" />
   </ItemGroup>
 
 </Project>

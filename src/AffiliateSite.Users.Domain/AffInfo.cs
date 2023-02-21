@@ -1,15 +1,10 @@
 ﻿using AffiliateSite.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AffiliateSite.Users.Messages;
 
 namespace AffiliateSite.Users.Domain
 {
     public class AffInfo : AggregateRoot<AffId>
     {
-        public AffId AffId { get; private set; }
         public AffiliateUserName UserName { get; private set; }
         public AffiliateFullName FullName { get; private set; }
         public AffiliateStatus Status { get; private set; }
@@ -27,7 +22,6 @@ namespace AffiliateSite.Users.Domain
                 UserName = userName,
                 FirstName = fullName.FirstName,
                 LastName = fullName.LastName,
-                Status = AffiliateStatus.Pending,
                 Email = email
             });
 
@@ -53,7 +47,7 @@ namespace AffiliateSite.Users.Domain
             switch (@event)
             {
                 case Events.AffiliateSignup e:
-                    AffId = new AffId(e.AffId);
+                    Id = new AffId(e.AffId);
                     UserName = new AffiliateUserName(e.UserName);
                     FullName = new AffiliateFullName(e.FirstName, e.LastName);
                     Status = AffiliateStatus.Pending;

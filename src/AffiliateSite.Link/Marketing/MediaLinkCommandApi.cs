@@ -1,0 +1,36 @@
+﻿using AffiliateSite.Infrastructure;
+using AffiliateSite.Link.Messages.MediaLink;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+
+namespace AffiliateSite.Link.Marketing
+{
+    [Authorize, ApiController, Route("api/MediaLink")]
+    public class MediaLinkCommandApi : ControllerBase
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly MediaLinkService _mediaLinkService;
+        private readonly ILogger _log;
+
+        public MediaLinkCommandApi(IHttpContextAccessor httpContextAccessor, MediaLinkService mediaLinkService, ILoggerFactory logger)
+        {
+            _httpContextAccessor = httpContextAccessor;
+            _mediaLinkService = mediaLinkService;
+            _log = logger.CreateLogger(GetType());
+        }
+
+        [HttpPost, Route("Toggle")]
+        public async Task<ApiResult> Toggle(Commands.ToggleMarketingLink request)
+        {
+            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            {
+                await _mediaLinkService.Handle(request, affId);
+                return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Success };
+            }
+            return new ApiResult();
+        }
+    }
+}

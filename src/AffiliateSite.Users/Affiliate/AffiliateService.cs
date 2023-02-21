@@ -54,7 +54,6 @@ namespace AffiliateSite.Users.Affiliate
                     if (aff == null)
                         throw new InvalidOperationException($"Entity with user name {cmd.UserName} cannot be found");
                     aff.UpdateInformation(AffiliatePhone.FromString(cmd.Phone), new AffiliateContactApp(cmd.Skype, cmd.QQ));
-                    await _repository.UpdateInformation(aff);
                     break;
             }
         }

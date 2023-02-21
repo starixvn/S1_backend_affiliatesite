@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AffiliateSite.Infrastructure\AffiliateSite.Infrastructure.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Link.Domain\AffiliateSite.Link.Domain.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Link.Messages\AffiliateSite.Link.Messages.csproj" />
     <ProjectReference Include="..\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj" />
   </ItemGroup>
 

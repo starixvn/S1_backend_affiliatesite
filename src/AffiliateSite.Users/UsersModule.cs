@@ -13,13 +13,19 @@ namespace AffiliateSite.Users
 {
     public static class UsersModule
     {
-        public static IServiceCollection AddUsersModule(this IServiceCollection services) =>
-            services
-            .AddScoped<IAffIInfoRepository, AffInfoRepository>()
-            .AddScoped<ICustomerRepository, CustomerRepository>()
-            .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()
-            .AddScoped<IUnitOfWork, UnitOfWork>()
-            .AddScoped<AffiliateService>()
-            .AddScoped<AuthService>();
+        public static IMvcCoreBuilder AddUsersModule(this IMvcCoreBuilder builder) 
+        {
+            builder.Services
+                .AddScoped<IAffIInfoRepository, AffInfoRepository>()
+                .AddScoped<ICustomerRepository, CustomerRepository>()
+                .AddScoped<IUsernameAutoIncrementRepository, UsernameAutoIncrementRepository>()
+                .AddScoped<IUnitOfWork, UnitOfWork>()
+                .AddScoped<AffiliateService>()
+                .AddScoped<AuthService>();
+
+            builder.AddApplicationPart(typeof(UsersModule).Assembly);
+
+            return builder;
+        }
     }
 }

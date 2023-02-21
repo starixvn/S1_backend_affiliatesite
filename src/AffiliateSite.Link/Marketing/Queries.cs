@@ -8,7 +8,7 @@ namespace AffiliateSite.Link.Marketing
 {
     public static class Queries
     {
-        public static async Task<ApiResult<IEnumerable<AffiliateLinkDomain>>> Query(this DbConnection connection, QueryModels.GetAffiliateLinkDomain request, int affId)
+        public static async Task<ApiResult<IEnumerable<LinkDomain>>> Query(this DbConnection connection, QueryModels.GetAffiliateLinkDomain request, int affId)
         {
             var sp = request.LinkType switch
             {
@@ -16,12 +16,26 @@ namespace AffiliateSite.Link.Marketing
                 1 => "Affiliate_SubAffiliateDomain_Sel",
                 _ => throw new ArgumentException()
             };
-            return new ApiResult<IEnumerable<AffiliateLinkDomain>>
+            return new ApiResult<IEnumerable<LinkDomain>>
             {
                 Data = await connection
-                    .QueryAsync<AffiliateLinkDomain>(sp, new { _AffId = affId }, commandType: CommandType.StoredProcedure),
+                    .QueryAsync<LinkDomain>(
+                    sp,
+                    new { _AffId = affId },
+                    commandType: CommandType.StoredProcedure),
                 ErrorCode = (int)ErrorCodeEnum.Success
             };
         }
+
+        public static async Task<ApiResult<IEnumerable<LinkHistory>>> Query(this DbConnection connection, int affId) =>
+            new ApiResult<IEnumerable<LinkHistory>>
+            {
+                Data = await connection
+                .QueryAsync<LinkHistory>(
+                    "Affiliate_AffMediaChannel_Statistics", 
+                    new { _AffId = affId },
+                    commandType: CommandType.StoredProcedure),
+                ErrorCode = (int)ErrorCodeEnum.Success
+            };
     }
 }

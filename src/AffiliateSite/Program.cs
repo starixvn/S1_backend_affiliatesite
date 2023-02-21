@@ -28,7 +28,6 @@ builder.Services
     .AddDatabaseConnection(builder.Configuration)
     .AddHttpContextAccessor()
     .AddScoped<CustomCookieAuthenticationEvents>()
-    .AddUsersModule()
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => 
     {
@@ -41,6 +40,7 @@ builder.Services
 builder.Services.AddMvcCore(
         options => options.Conventions.Add(new CommandConvention())
     )
+    .AddUsersModule()
     .AddLinkModule();
 builder.Services.AddControllers();
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System.Data.Common;
 
 namespace AffiliateSite.Link.Marketing
@@ -10,7 +11,7 @@ namespace AffiliateSite.Link.Marketing
     public class MediaLinkQueryApi : ControllerBase
     {
         private readonly DbConnection _connection;
-        private IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public MediaLinkQueryApi(DbConnection connection, IHttpContextAccessor httpContextAccessor)
         {
@@ -24,6 +25,16 @@ namespace AffiliateSite.Link.Marketing
             if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
             {
                 return await _connection.Query(request, affId);
+            }
+            return new ApiResult();
+        }
+
+        [HttpPost, Route("GetHistory")]
+        public async Task<ApiResult> GetHistory() 
+        {
+            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            {
+                return await _connection.Query(affId);
             }
             return new ApiResult();
         }

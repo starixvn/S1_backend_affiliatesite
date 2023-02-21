@@ -6,13 +6,13 @@ using System.Data.Common;
 
 namespace AffiliateSite.Link.Marketing
 {
-    [Authorize, Route("/api/AffiliateLink")]
-    public class AffiliateLinkQueryApi : ControllerBase
+    [Authorize, ApiController, Route("/api/MediaLink")]
+    public class MediaLinkQueryApi : ControllerBase
     {
         private readonly DbConnection _connection;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public AffiliateLinkQueryApi(DbConnection connection, IHttpContextAccessor httpContextAccessor)
+        public MediaLinkQueryApi(DbConnection connection, IHttpContextAccessor httpContextAccessor)
         {
             _connection = connection;
             _httpContextAccessor = httpContextAccessor;

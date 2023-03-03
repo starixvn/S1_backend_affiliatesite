@@ -15,6 +15,7 @@ namespace AffiliateSite.Payment
             builder.Services
                 .AddScoped<AffPayoutRepository, AffPayoutRepository>()
                 .AddScoped<AffTransRepository, AffTransRepository>()
+                .AddScoped<ExchangeRateRepository, ExchangeRateRepository>()
                 .AddScoped<PayoutService>();
             builder.AddApplicationPart(typeof(PaymentModule).Assembly);
             return builder;

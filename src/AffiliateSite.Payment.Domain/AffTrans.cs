@@ -8,19 +8,8 @@ using System.Threading.Tasks;
 
 namespace AffiliateSite.Payment.Domain
 {
-
     public class AffTrans : Entity<TransId>
     {
-        public AffTrans(RefId refId, AffId affId, DateTime transDate, decimal amount) 
-        {
-            Apply(new Events.CreateAffTrans 
-            {
-                RefId = refId,
-                AffId = affId,
-                TransDate = transDate,
-                Amount = amount,
-        });
-        }   
         public RefId RefId { get; private set; }
         public AffId AffId { get; private set; }
         public decimal Amount { get; private set; }
@@ -29,6 +18,14 @@ namespace AffiliateSite.Payment.Domain
         public string Description { get; private set; }
         public int Currency { get; private set; }
         public decimal Rate { get; private set; }
+        public AffTrans(RefId refId, AffId affId, DateTime transDate, decimal amount) =>
+            Apply(new Events.CreateAffTrans
+            {
+                RefId = refId,
+                AffId = affId,
+                TransDate = transDate,
+                Amount = amount,
+            });
 
         protected override void When(object @event)
         {
@@ -36,7 +33,7 @@ namespace AffiliateSite.Payment.Domain
             {
                 case Events.CreateAffTrans e:
                     AffId= e.AffId;
-                    Amount= e.Amount;
+                    Amount= e.Amount * -1;
                     TransDate = e.TransDate;
                     Status = PayoutStatus.Pending;
                     Description = "Request payout";

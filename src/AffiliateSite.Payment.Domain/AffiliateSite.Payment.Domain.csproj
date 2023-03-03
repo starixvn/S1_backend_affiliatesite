@@ -11,4 +11,8 @@
     <ProjectReference Include="..\AffiliateSite.Payment.Messages\AffiliateSite.Payment.Messages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Payout\" />
+  </ItemGroup>
+
 </Project>

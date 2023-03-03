@@ -1,11 +1,5 @@
 ﻿using AffiliateSite.Framework;
 using AffiliateSite.Payment.Messages;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AffiliateSite.Payment.Domain
 {
@@ -24,15 +18,13 @@ namespace AffiliateSite.Payment.Domain
         public string PlayerCurrency { get; private set; }
         public string PlayerCurrencyCode { get; private set; }
         public string PlayerCurrencyName { get; private set; }
-        public AffPayout(int affId, DateTime transDate, decimal amount)
-        {
+        public AffPayout(int affId, DateTime transDate, decimal amount) =>
             Apply(new Events.CreateAffPayout
             {
                 AffId = affId,
                 TransDate = transDate,
                 Amount = amount
             });
-        }
 
         protected override void When(object @event)
         {
@@ -40,7 +32,7 @@ namespace AffiliateSite.Payment.Domain
             {
                 case Events.CreateAffPayout e:
                     AffId = e.AffId;
-                    Amount = e.Amount;
+                    Amount = e.Amount * -1;
                     Status = PayoutStatus.Pending;
                     TransDate= e.TransDate;
                     break;

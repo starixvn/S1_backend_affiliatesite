@@ -8,6 +8,13 @@ namespace AffiliateSite.Payment.Payout
 {
     public class AffPayoutRepository
     {
+        private readonly DbConnection _connection;
+
+        public AffPayoutRepository(DbConnection connection)
+        {
+            _connection = connection;
+        }
+
         public async Task<int> Add(AffPayout entity, DbTransaction transaction) 
         {
             var p = new DynamicParameters();
@@ -28,5 +35,11 @@ namespace AffiliateSite.Payment.Payout
             var refId = p.Get<int?>("_RefId") ?? 0;
             return refId;
         }
+
+        public async Task<bool> IsExistsPending(int affId) =>
+            await _connection.ExecuteScalarAsync<bool>(
+                "Affiliate_PendingAffPayout_Check",
+                new { _AffId = affId }, 
+                commandType: CommandType.StoredProcedure);
     }
 }

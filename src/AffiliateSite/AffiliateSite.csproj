@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AffiliateSite.Link\AffiliateSite.Link.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Payment\AffiliateSite.Payment.csproj" />
     <ProjectReference Include="..\AffiliateSite.Users\AffiliateSite.Users.csproj" />
   </ItemGroup>
 </Project>

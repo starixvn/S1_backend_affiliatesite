@@ -21,15 +21,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.WebApi", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Link", "src\AffiliateSite.Link\AffiliateSite.Link.csproj", "{6DAFBEC0-EC6A-4C62-A40B-A1E48FA84F93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Users", "src\AffiliateSite.Users\AffiliateSite.Users.csproj", "{FD3A3966-23A8-4470-ABD3-2AD76C29E140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Users", "src\AffiliateSite.Users\AffiliateSite.Users.csproj", "{FD3A3966-23A8-4470-ABD3-2AD76C29E140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Users.Messages", "src\AffiliateSite.Users.Messages\AffiliateSite.Users.Messages.csproj", "{B53C9816-36F7-4EF8-81B8-DD834AC9D2B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Users.Messages", "src\AffiliateSite.Users.Messages\AffiliateSite.Users.Messages.csproj", "{B53C9816-36F7-4EF8-81B8-DD834AC9D2B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Infrastructure", "src\AffiliateSite.Infrastructure\AffiliateSite.Infrastructure.csproj", "{08FBA387-422E-48C8-A5B5-C706E13C01F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Infrastructure", "src\AffiliateSite.Infrastructure\AffiliateSite.Infrastructure.csproj", "{08FBA387-422E-48C8-A5B5-C706E13C01F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Link.Domain", "src\AffiliateSite.Link.Domain\AffiliateSite.Link.Domain.csproj", "{548C78A8-B83E-48A8-B6D8-EFEA8A6211D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Link.Domain", "src\AffiliateSite.Link.Domain\AffiliateSite.Link.Domain.csproj", "{548C78A8-B83E-48A8-B6D8-EFEA8A6211D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Link.Messages", "src\AffiliateSite.Link.Messages\AffiliateSite.Link.Messages.csproj", "{41FD1815-5645-4C9B-9F08-E336C42A4923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Link.Messages", "src\AffiliateSite.Link.Messages\AffiliateSite.Link.Messages.csproj", "{41FD1815-5645-4C9B-9F08-E336C42A4923}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Payment.Domain", "src\AffiliateSite.Payment.Domain\AffiliateSite.Payment.Domain.csproj", "{7F5DC7C3-351B-4312-8439-106D1A9D2A9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AffiliateSite.Payment.Messages", "src\AffiliateSite.Payment.Messages\AffiliateSite.Payment.Messages.csproj", "{9F137B8D-FB39-449D-91D7-6D09483BBA28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateSite.Payment", "src\AffiliateSite.Payment\AffiliateSite.Payment.csproj", "{50F50258-E186-4B6F-9A84-F4464504D49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +87,18 @@ Global
 		{41FD1815-5645-4C9B-9F08-E336C42A4923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41FD1815-5645-4C9B-9F08-E336C42A4923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41FD1815-5645-4C9B-9F08-E336C42A4923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5DC7C3-351B-4312-8439-106D1A9D2A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5DC7C3-351B-4312-8439-106D1A9D2A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5DC7C3-351B-4312-8439-106D1A9D2A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5DC7C3-351B-4312-8439-106D1A9D2A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F137B8D-FB39-449D-91D7-6D09483BBA28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F137B8D-FB39-449D-91D7-6D09483BBA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F137B8D-FB39-449D-91D7-6D09483BBA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F137B8D-FB39-449D-91D7-6D09483BBA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F50258-E186-4B6F-9A84-F4464504D49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F50258-E186-4B6F-9A84-F4464504D49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F50258-E186-4B6F-9A84-F4464504D49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F50258-E186-4B6F-9A84-F4464504D49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +116,9 @@ Global
 		{08FBA387-422E-48C8-A5B5-C706E13C01F5} = {E5CE3A6B-8183-4879-A204-DBDEC9756FE9}
 		{548C78A8-B83E-48A8-B6D8-EFEA8A6211D0} = {25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}
 		{41FD1815-5645-4C9B-9F08-E336C42A4923} = {25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}
+		{7F5DC7C3-351B-4312-8439-106D1A9D2A9E} = {25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}
+		{9F137B8D-FB39-449D-91D7-6D09483BBA28} = {25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}
+		{50F50258-E186-4B6F-9A84-F4464504D49D} = {25B7A6D5-BC9D-465C-B0AE-3266FD3D67AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9599B84D-9503-4955-BD39-E314DE907FB4}

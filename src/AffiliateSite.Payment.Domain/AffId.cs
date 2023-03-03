@@ -1,0 +1,18 @@
+﻿using AffiliateSite.Framework;
+
+namespace AffiliateSite.Payment.Domain
+{
+    public class AffId : ValueObject<AffId>
+    {
+        public int Value { get; }
+        public AffId(int value)
+        {
+            if (value == default)
+                throw new ArgumentNullException(nameof(value), "id cannot be empty");
+
+            Value = value;
+        }
+        public static implicit operator int(AffId self) => self.Value;
+        public static implicit operator AffId(int value) => new(value);
+    }
+}

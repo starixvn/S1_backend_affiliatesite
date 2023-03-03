@@ -1,5 +1,6 @@
 using AffiliateSite.Extensions;
 using AffiliateSite.Link;
+using AffiliateSite.Payment;
 using AffiliateSite.Users;
 using AffiliateSite.WebApi;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -41,7 +42,8 @@ builder.Services.AddMvcCore(
         options => options.Conventions.Add(new CommandConvention())
     )
     .AddUsersModule()
-    .AddLinkModule();
+    .AddLinkModule()
+    .AddPaymentModule();
 builder.Services.AddControllers();
 
 var app = builder.Build();

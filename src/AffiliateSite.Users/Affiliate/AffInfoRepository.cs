@@ -29,7 +29,7 @@ namespace AffiliateSite.Users.Affiliate
 
         public async Task<bool> IsEmailExists(string userNmae)
         {
-            var result = await _connection.QueryFirstAsync<bool>("", new { }, commandType: CommandType.StoredProcedure);
+            var result = await _connection.ExecuteScalarAsync<bool>("", new { }, commandType: CommandType.StoredProcedure);
             return result;
         }
 

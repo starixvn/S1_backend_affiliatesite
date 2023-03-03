@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+	
+  <ItemGroup>
+	<PackageReference Include="Dapper" Version="2.0.123" />
+	<PackageReference Include="MySql.Data" Version="8.0.32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AffiliateSite.Payment.Domain\AffiliateSite.Payment.Domain.csproj" />
+    <ProjectReference Include="..\AffiliateSite.Payment.Messages\AffiliateSite.Payment.Messages.csproj" />
+    <ProjectReference Include="..\AffiliateSite.WebApi\AffiliateSite.WebApi.csproj" />
+  </ItemGroup>
+
+</Project>

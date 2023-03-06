@@ -1,8 +1,8 @@
 ﻿using AffiliateSite.Infrastructure;
+using AffiliateSite.WebApi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Asn1.Ocsp;
 using System.Data.Common;
 
 namespace AffiliateSite.Link.Marketing
@@ -22,9 +22,9 @@ namespace AffiliateSite.Link.Marketing
         [HttpPost, Route("GetDomain")]
         public async Task<ApiResult> GetDomain(QueryModels.GetAffiliateLinkDomain request)
         {
-            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            if (_httpContextAccessor.TryParse(out var authData))
             {
-                return await _connection.Query(request, affId);
+                return await _connection.Query(request, authData.AffId);
             }
             return new ApiResult();
         }
@@ -32,9 +32,9 @@ namespace AffiliateSite.Link.Marketing
         [HttpPost, Route("GetHistory")]
         public async Task<ApiResult> GetHistory() 
         {
-            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            if (_httpContextAccessor.TryParse(out var authData))
             {
-                return await _connection.Query(affId);
+                return await _connection.Query(authData.AffId);
             }
             return new ApiResult();
         }

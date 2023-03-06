@@ -2,6 +2,7 @@
 using AffiliateSite.Infrastructure;
 using AffiliateSite.Users.Messages.Affiliate;
 using Microsoft.Extensions.Logging;
+using AffiliateSite.WebApi;
 
 namespace AffiliateSite.Users.Affiliate
 {

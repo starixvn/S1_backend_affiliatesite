@@ -2,7 +2,6 @@
 using Dapper;
 using System.Data;
 using System.Data.Common;
-using static Mysqlx.Crud.Order.Types;
 
 namespace AffiliateSite.Payment.Payout
 {
@@ -41,5 +40,19 @@ namespace AffiliateSite.Payment.Payout
                 "Affiliate_PendingAffPayout_Check",
                 new { _AffId = affId }, 
                 commandType: CommandType.StoredProcedure);
+
+
+        public async Task<ReadModels.Information> GetInformation(int affId) =>
+            await _connection.QueryFirstOrDefaultAsync<ReadModels.Information>(
+                "Affiliate_PaymentInformation_Get", 
+                new { _AffId = affId }, 
+                commandType: CommandType.StoredProcedure);
+
+        public async Task<IEnumerable<ReadModels.History>> GetHistory(int affId, int year) =>
+            await _connection.QueryAsync<ReadModels.History>(
+                "Affiliate_PaymentRequest_Get",
+                new { _AffId = affId, _Year = new DateTime(year, 1, 1) },
+                commandType: CommandType.StoredProcedure);
     }
+
 }

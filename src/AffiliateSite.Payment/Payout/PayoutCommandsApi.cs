@@ -1,4 +1,5 @@
 ﻿using AffiliateSite.Payment.Messages;
+using AffiliateSite.WebApi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,9 @@ namespace AffiliateSite.Payment.Payout
         [HttpPost, Route("Apply")]
         public async void Apply(Commands.Payout command) 
         {
-            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId)) 
+            if (_httpContextAccessor.TryParse(out var authData))
             {
-                await _payoutService.Handle(command, affId);
+                await _payoutService.Handle(command, authData.AffId);
             }
         }
     }

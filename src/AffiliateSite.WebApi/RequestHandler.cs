@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace AffiliateSite.Infrastructure
+namespace AffiliateSite.WebApi
 {
     public static class RequestHandler
     {

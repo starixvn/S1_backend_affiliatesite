@@ -1,4 +1,4 @@
-﻿using AffiliateSite.Infrastructure;
+﻿using AffiliateSite.WebApi;
 using AffiliateSite.Link.Messages.MediaLink;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -24,9 +24,9 @@ namespace AffiliateSite.Link.Marketing
         [HttpPost, Route("Toggle")]
         public async Task<ApiResult> Toggle(Commands.ToggleMarketingLink request)
         {
-            if (int.TryParse(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(a => a.Type == "user")?.Value, out var affId))
+            if (_httpContextAccessor.TryParse(out var authData))
             {
-                await _mediaLinkService.Handle(request, affId);
+                await _mediaLinkService.Handle(request, authData.AffId);
                 return new ApiResult() { ErrorCode = (int)ErrorCodeEnum.Success };
             }
             return new ApiResult();
